@@ -1,0 +1,173 @@
+@import "~materialize-css/dist/css/materialize.min.css";
+
+$body-background: white;
+$button-background: red;
+$white-color: white;
+
+$deg: -45deg;
+
+$border: 2px solid $white-color;
+
+$media: 900px;
+
+@mixin text-rotate($property) {
+  transform: skew(-$property);
+  @media only screen and (max-width: $media) {
+    transform: skew(0);
+  } 
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100vw;
+  height: 100vh;
+
+  background: $body-background;
+
+  font-size: 22px;
+}
+
+.wrapper {
+  max-width: 1200px;
+  min-width: 600px;
+  margin: 0 auto;
+}
+
+.background-img {
+  max-width: 1100px;
+  width: 90vw;
+
+  min-width: 600px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 250px;
+
+  background-image: url('./components/img/black-texture-crumpled-embossed-background_263512-163.jpg');
+}
+
+.input-group {
+  display: flex;
+
+  border: $border;
+
+  div {
+    display: flex;
+    align-items: center;
+
+    max-width: 700px;
+    width: 60vw;
+
+    padding-left: 25px;
+
+    background-color: $white-color;
+    opacity: .5;
+
+    @media only screen and (max-width: $media) {
+      width: 300px;
+    }
+
+    input {
+      max-width: 650px;
+      width: 55vw;
+      height: 50px;
+  
+      background-color: $white-color;
+      opacity: .5;
+      border: none;
+      outline:none;
+
+      &:invalid {
+        color: red;
+      }
+  
+      @include text-rotate($deg);
+  
+      @media only screen and (max-width: $media) {
+        width: 250px;
+      }
+    }
+  }
+
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    max-width: 300px;
+    width: 20vw;
+    height: 80px;
+
+    background: $button-background;
+    color: $white-color;
+    border: $border;
+
+    @media only screen and (max-width: $media) {
+      width: 200px;
+    }
+
+    span {
+      @include text-rotate($deg);
+    }
+
+    svg {
+      margin: 10px;
+      @include text-rotate($deg);
+    }
+
+    &:hover {
+      cursor: pointer;
+      color: rgb($white-color, 80%)
+    }
+  }
+}
+
+.skew {
+	transform: skew($deg); 
+  @media only screen and (max-width: $media) {
+    transform: skew(0); 
+  }
+}
+
+.invalid {
+  background-color: red;
+}
+
+.inform-window {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+
+  width: 400px;
+
+  opacity: .5;
+  background-color: $white-color;
+  border-radius: 5px;
+  padding: 10px;
+
+  button {
+    width: 100px;
+    height: 40px;
+    border-radius: 5px;
+
+    background-color: $body-background;
+  }
+}
+
+.hide {
+  display: none;
+}
