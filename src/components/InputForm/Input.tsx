@@ -1,17 +1,18 @@
 import { useEffect, useRef } from "react";
 
 interface IInput {
+  clear: boolean;
   state: (value: string) =>void;
 }
 
-export default function Input({state}: IInput){
+export default function Input({clear, state}: IInput){
   const ref = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if(ref.current){
       ref.current.value = '';
     }
-  }, [])
+  }, [clear])
 
   const keyPressHandler = (event: React.KeyboardEvent) => {
     if(ref.current){
